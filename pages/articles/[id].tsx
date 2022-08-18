@@ -1,12 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next'
 import prisma from '../../lib/prisma'
+import Article from '../../types/Article'
 
 interface Props {
-  article: {
-    id: Number
-    title: String
-    body: String
-  }
+  article: Article
 }
 
 const Article: NextPage<Props> = ({ article }) => {

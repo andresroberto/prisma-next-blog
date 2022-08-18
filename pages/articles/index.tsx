@@ -1,13 +1,10 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import prisma from '../../lib/prisma'
+import Article from '../../types/Article'
 
 interface Props {
-  articles: Array<{
-    id: Number
-    title: String
-    body: String
-  }>
+  articles: Array<Article>
 }
 
 const Articles: NextPage<Props> = ({ articles }) => {
@@ -16,15 +13,13 @@ const Articles: NextPage<Props> = ({ articles }) => {
       <h1>Articles</h1>
 
       <ul>
-        {articles.map(article => {
-          return (
-            <li key={String(article.id)}>
-              <Link href={`/articles/${article.id}`}>
-                {article.title}
-              </Link>
-            </li>
-          )
-        })}
+        {articles.map(article => (
+          <li key={String(article.id)}>
+            <Link href={`/articles/${article.id}`}>
+              {article.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </>
   )
